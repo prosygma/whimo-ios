@@ -1,0 +1,4 @@
+# Fork-owned binary brand files: on merges from upstream keep the CamerTrace
+# version (needs `git config merge.ours.driver true`, see scripts/fork-setup.sh).
+Whimo/Resources/Assets.xcassets/AppIcon*.appiconset/*.jpg merge=ours
+Whimo/Resources/Assets.xcassets/splashScreen.imageset/splashScreen.pdf merge=ours

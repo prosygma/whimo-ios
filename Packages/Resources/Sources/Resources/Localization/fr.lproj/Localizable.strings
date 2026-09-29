@@ -7,7 +7,7 @@
 */
 
 // MARK: - General
-"general.appName" = "WHIMO";
+"general.appName" = "CamerTrace";
 "general.keyboard.toolbar.done" = "Terminé";
 
 "general.alert.logout.title" = "Déconnexion";
@@ -398,11 +398,11 @@
 
 "buyTxSelectType.row.producer.title" = "Transaction initiale";
 "buyTxSelectType.row.producer.subtitle" = "Le vendeur n'utilise pas cette application";
-"buyTxSelectType.row.producer.infoText" = "Choisissez ceci si le vendeur n'a pas de compte sur WHIMO.";
+"buyTxSelectType.row.producer.infoText" = "Choisissez ceci si le vendeur n'a pas de compte sur CamerTrace.";
 
 "buyTxSelectType.row.downstream.title" = "Transaction en aval";
 "buyTxSelectType.row.downstream.subtitle" = "Le vendeur utilise cette application";
-"buyTxSelectType.row.downstream.infoText" = "Choisissez ceci si le vendeur a un compte sur WHIMO.";
+"buyTxSelectType.row.downstream.infoText" = "Choisissez ceci si le vendeur a un compte sur CamerTrace.";
 
 // MARK: - Buy Transaction Select Seller
 "buyTxSelectSeller.title" = "Transaction initiale";
@@ -433,7 +433,7 @@
 
 "createTransactionForm.row.placeholder.default" = "Appuyez pour ajouter des données";
 "createTransactionForm.row.placeholder.geodata" = "Appuyez pour téléverser un fichier";
-"createTransactionForm.row.placeholder.inviteSupplier" = "Appuyez pour inviter un utilisateur à WHIMO";
+"createTransactionForm.row.placeholder.inviteSupplier" = "Appuyez pour inviter un utilisateur à CamerTrace";
 
 "createTransactionForm.row.geodata.title" = "Données de géo-localisation de la parcelle";
 
@@ -538,7 +538,7 @@
 
 // MARK: - Invite Seller
 "inviteSeller.title" = "Informations sur le fournisseur";
-"inviteSeller.subtitle" = "Veuillez entrer des informations précises sur la contrepartie afin que nous puissions l'inviter à WHIMO.";
+"inviteSeller.subtitle" = "Veuillez entrer des informations précises sur la contrepartie afin que nous puissions l'inviter à CamerTrace.";
 
 "inviteSeller.textFields.email.description" = "Courriel";
 "inviteSeller.textFields.email.placeholder" = "Entrez votre email";

@@ -7,7 +7,7 @@
 */
 
 // MARK: - General
-"general.appName" = "WHIMO";
+"general.appName" = "CamerTrace";
 "general.keyboard.toolbar.done" = "Hecho";
 
 "general.alert.logout.title" = "Cerrar sesión";
@@ -398,11 +398,11 @@
 
 "buyTxSelectType.row.producer.title" = "Transacción inicial";
 "buyTxSelectType.row.producer.subtitle" = "El vendedor no está usando esta aplicación";
-"buyTxSelectType.row.producer.infoText" = "Elige esto si el vendedor no tiene una cuenta en WHIMO.";
+"buyTxSelectType.row.producer.infoText" = "Elige esto si el vendedor no tiene una cuenta en CamerTrace.";
 
 "buyTxSelectType.row.downstream.title" = "Transacción posterior";
 "buyTxSelectType.row.downstream.subtitle" = "El vendedor está usando esta aplicación";
-"buyTxSelectType.row.downstream.infoText" = "Elige esto si el vendedor tiene una cuenta en WHIMO.";
+"buyTxSelectType.row.downstream.infoText" = "Elige esto si el vendedor tiene una cuenta en CamerTrace.";
 
 // MARK: - Buy Transaction Select Seller
 "buyTxSelectSeller.title" = "Transacción inicial";
@@ -433,7 +433,7 @@
 
 "createTransactionForm.row.placeholder.default" = "Toca para añadir datos";
 "createTransactionForm.row.placeholder.geodata" = "Toca para subir archivo";
-"createTransactionForm.row.placeholder.inviteSupplier" = "Toca para invitar a un usuario a WHIMO";
+"createTransactionForm.row.placeholder.inviteSupplier" = "Toca para invitar a un usuario a CamerTrace";
 
 "createTransactionForm.row.geodata.title" = "Geodatos de la finca";
 
@@ -538,7 +538,7 @@
 
 // MARK: - Invite Seller
 "inviteSeller.title" = "Información del proveedor";
-"inviteSeller.subtitle" = "Por favor, introduce información precisa de la contraparte para que podamos invitarla a WHIMO.";
+"inviteSeller.subtitle" = "Por favor, introduce información precisa de la contraparte para que podamos invitarla a CamerTrace.";
 
 "inviteSeller.textFields.email.description" = "Correo electrónico";
 "inviteSeller.textFields.email.placeholder" = "Introducir correo electrónico";

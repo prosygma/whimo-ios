@@ -41,7 +41,7 @@ extension EmailClientServiceImpl {
         var subject: String? {
             switch self {
                 case .feedback:
-                    "WHIMO App Feedback"
+                    "CamerTrace App Feedback"
             }
         }
     }
