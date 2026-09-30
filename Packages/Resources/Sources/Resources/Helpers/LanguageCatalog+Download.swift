@@ -26,6 +26,9 @@
 
 
 import Foundation
+#if canImport(FoundationNetworking)
+import FoundationNetworking // Linux
+#endif
 
 // MARK: - Download from the API
 public extension LanguageCatalog {
