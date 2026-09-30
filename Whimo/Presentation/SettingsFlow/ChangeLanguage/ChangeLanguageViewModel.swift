@@ -28,7 +28,8 @@
 import SwiftUI
 import Utility
 import StorageKit
-import enum Resources.LocalizeKeys
+import struct Resources.LocalizeKeys
+import class Resources.LanguageCatalog
 
 private typealias Module = ChangeLanguageModule
 private typealias ViewModel = Module.ViewModel
@@ -38,7 +39,7 @@ extension Module {
     final class ViewModel: ViewModelProtocol {
         // MARK: - Public Properties
         @Published private(set) var languages: [Model] = []
-        @Published private(set) var selectedLanguage: Model = .init(localize: .english)
+        @Published private(set) var selectedLanguage: Model = .init(localize: .default)
 
         // MARK: - Private Properties
         @AppStorage(.currentLocalize) private var currentLocalize: LocalizeKeys = .english
@@ -54,9 +55,13 @@ extension Module {
 
         // MARK: - ViewModelProtocol
         func didTapChange(language: Model) {
-            currentLocalize = language.localize
-            userDefaultsStore.set(language.localize, key: .currentLocalize)
-            fetchSelectedLanguage()
+            // Strings uploaded in the admin panel for this language, before showing it.
+            Task { @MainActor in
+                await LanguageCatalog.shared.refreshStrings(language: language.localize.code, baseURL: ApiConfiguration.baseUrl)
+                currentLocalize = language.localize
+                userDefaultsStore.set(language.localize, key: .currentLocalize)
+                fetchSelectedLanguage()
+            }
         }
     }
 }

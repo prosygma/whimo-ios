@@ -26,7 +26,7 @@
 //
 
 import Foundation
-import enum Resources.LocalizeKeys
+import struct Resources.LocalizeKeys
 import class StorageKit.UserDefaultsStore
 
 // MARK: - DateTimeFormatter
@@ -67,7 +67,7 @@ final class DateTimeFormatter: DateFormatter, @unchecked Sendable {
         if let locale {
             self.locale = locale
         } else {
-            let currentLocalize: LocalizeKeys = defaults.value(forKey: UserDefaultsStore.Keys.currentLocalize.rawValue) as? LocalizeKeys ?? .english
+            let currentLocalize: LocalizeKeys = defaults.string(forKey: UserDefaultsStore.Keys.currentLocalize.rawValue).map(LocalizeKeys.init(rawValue:)) ?? .default
             self.locale = currentLocalize.locale
         }
     }

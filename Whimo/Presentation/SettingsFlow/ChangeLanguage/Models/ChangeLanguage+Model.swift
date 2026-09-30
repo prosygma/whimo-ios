@@ -38,7 +38,8 @@ extension Module {
 
         var id: Self { self }
         var title: String { localize.title }
-        var flag: Image {
+        /// Flag built into the app, for the languages it ships.
+        var flag: Image? {
             switch localize {
                 case .english:
                     AppAssets.Language.langEnglish.imageSwiftUI
@@ -46,8 +47,12 @@ extension Module {
                     AppAssets.Language.langFrench.imageSwiftUI
                 case .spanish:
                     AppAssets.Language.langSpanish.imageSwiftUI
+                default:
+                    nil
             }
         }
+        /// Flag emoji set in the admin panel, for the other languages.
+        var flagEmoji: String? { localize.flag }
 
         func hash(into hasher: inout Hasher) {
             hasher.combine(title)

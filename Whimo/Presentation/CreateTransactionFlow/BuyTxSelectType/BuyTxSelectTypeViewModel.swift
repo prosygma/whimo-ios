@@ -28,7 +28,7 @@
 import SwiftUI
 import Utility
 import class CommonUI.AlertManager
-import enum Resources.LocalizeKeys
+import struct Resources.LocalizeKeys
 
 private typealias Module = BuyTxSelectTypeModule
 private typealias ViewModel = Module.ViewModel

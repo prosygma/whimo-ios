@@ -27,7 +27,7 @@
 
 import SwiftUI
 import Utility
-import enum Resources.LocalizeKeys
+import struct Resources.LocalizeKeys
 
 private typealias Module = TabBarModule
 private typealias ViewModel = Module.ViewModel

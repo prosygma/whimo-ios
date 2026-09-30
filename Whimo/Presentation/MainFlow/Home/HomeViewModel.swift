@@ -29,7 +29,7 @@ import SwiftUI
 import Combine
 import RestClient
 import Utility
-import enum Resources.LocalizeKeys
+import struct Resources.LocalizeKeys
 
 private typealias Module = HomeModule
 private typealias ViewModel = Module.ViewModel

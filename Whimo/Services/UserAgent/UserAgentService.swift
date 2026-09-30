@@ -27,7 +27,8 @@
 
 import Foundation
 import StorageKit
-import enum Resources.LocalizeKeys
+import struct Resources.LocalizeKeys
+import class Resources.LanguageCatalog
 import Utility
 
 final class UserAgentService: UserAgentServiceProtocol {
@@ -58,6 +59,16 @@ final class UserAgentService: UserAgentServiceProtocol {
 
     func configure() {
         detectLanguage()
+
+        // Languages and strings are managed in the admin panel: refresh them, then make sure
+        // the language in use is still offered.
+        Task {
+            let catalog: LanguageCatalog = .shared
+            await catalog.refreshLanguages(baseURL: ApiConfiguration.baseUrl)
+            detectLanguage()
+            let language: LocalizeKeys? = userDefaultsStore.get(.currentLocalize)
+            await catalog.refreshStrings(language: language?.code ?? LocalizeKeys.default.code, baseURL: ApiConfiguration.baseUrl)
+        }
     }
 }
 
@@ -72,15 +83,16 @@ private extension UserAgentService {
         return property
     }
 
+    /// The stored language if still offered, else the device's preferred one if offered
+    /// (fr-FR matches fr), else the default language of the admin panel.
     func detectLanguage() {
-        var language: LocalizeKeys? = userDefaultsStore.get(.currentLocalize)
-        if language == nil {
-            log.debug("locale: \(Locale.current)")
-            log.debug("preferredLanguages: \(Locale.preferredLanguages)")
-            let preferredLanguage: String = Locale.preferredLanguages.first ?? LocalizeKeys.english.code
-            language = .init(rawValue: preferredLanguage) ?? .english
-            UserDefaults.standard.setValue(language?.code, forKey: UserDefaultsStore.StoreKeys.currentLocalize.rawValue)
-            userDefaultsStore.set(language, key: .currentLocalize)
-        }
+        let stored: LocalizeKeys? = userDefaultsStore.get(.currentLocalize)
+        log.debug("preferredLanguages: \(Locale.preferredLanguages)")
+        let code = LanguageCatalog.shared.resolve(stored: stored?.code, preferred: Locale.preferredLanguages)
+        guard code != stored?.code else { return }
+
+        let language: LocalizeKeys = .init(rawValue: code)
+        UserDefaults.standard.setValue(language.code, forKey: UserDefaultsStore.StoreKeys.currentLocalize.rawValue)
+        userDefaultsStore.set(language, key: .currentLocalize)
     }
 }

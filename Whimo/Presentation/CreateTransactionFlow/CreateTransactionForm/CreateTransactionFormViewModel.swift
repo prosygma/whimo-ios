@@ -29,7 +29,7 @@ import SwiftUI
 import CoreLocation
 import Utility
 import class CommonUI.AlertManager
-import enum Resources.LocalizeKeys
+import struct Resources.LocalizeKeys
 import Extensions
 
 private typealias Module = CreateTransactionFormModule

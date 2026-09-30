@@ -28,7 +28,7 @@
 import SwiftUI
 import StorageKit
 import Utility
-import enum Resources.LocalizeKeys
+import struct Resources.LocalizeKeys
 import class CommonUI.AlertManager
 
 private typealias Module = OTPModule

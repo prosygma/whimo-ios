@@ -68,8 +68,20 @@ private extension RowView {
     }
 
     @ViewBuilder func flagImage() -> some View {
-        model.flag
-            .frame(width: 24, height: 24)
+        if let flag = model.flag {
+            flag
+                .frame(width: 24, height: 24)
+        } else if let emoji = model.flagEmoji {
+            Text(emoji)
+                .font(.system(size: 20))
+                .frame(width: 24, height: 24)
+        } else {
+            Text(model.localize.code.prefix(2).uppercased())
+                .font(.system(size: 10, weight: .semibold))
+                .foregroundStyle(AppColors.Gray.gray90.colorSwiftUI)
+                .frame(width: 24, height: 24)
+                .background(Circle().fill(AppColors.Gray.gray10.colorSwiftUI))
+        }
     }
 
     @ViewBuilder func title() -> some View {
