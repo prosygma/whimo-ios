@@ -26,7 +26,7 @@
 //
 
 import Foundation
-import enum Resources.LocalizeKeys
+import struct Resources.LocalizeKeys
 import class StorageKit.UserDefaultsStore
 
 final class DecimalFormatter: NumberFormatter, @unchecked Sendable {
@@ -67,7 +67,7 @@ final class DecimalFormatter: NumberFormatter, @unchecked Sendable {
     override init() {
         super.init()
 
-        let currentLocalize: LocalizeKeys = defaults.value(forKey: UserDefaultsStore.Keys.currentLocalize.rawValue) as? LocalizeKeys ?? .english
+        let currentLocalize: LocalizeKeys = defaults.string(forKey: UserDefaultsStore.Keys.currentLocalize.rawValue).map(LocalizeKeys.init(rawValue:)) ?? .default
         self.locale = currentLocalize.locale
         self.numberStyle = .decimal
     }

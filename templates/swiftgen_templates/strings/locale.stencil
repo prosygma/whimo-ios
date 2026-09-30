@@ -57,8 +57,7 @@ import SwiftUI
     }
 
     public static var currentLocalize: LocalizeKeys {
-        let key = UserDefaults.standard.string(forKey: "currentLocalize") ?? "en"
-        return .init(rawValue: key) ?? .english
+        .init(rawValue: UserDefaults.standard.string(forKey: "currentLocalize") ?? LocalizeKeys.default.code)
     }
 
     public static var currentLanguageCode: String { currentLocalize.code }
@@ -80,10 +79,10 @@ import SwiftUI
 
 public extension {{enumName}} {
     static func tr(_ table: String, _ key: String, _ args: CVarArg...) -> String {
-        // swiftlint:disable:next nslocalizedstring_key
-        let path = {{param.bundle|default:"BundleToken.bundle"}}.path(forResource: {{enumName}}.currentLanguageCode, ofType: "lproj")
-        let bundle = Bundle(path: path!) ?? {{param.bundle|default:"BundleToken.bundle"}}
-        let format = NSLocalizedString(key, tableName: table, bundle: bundle, comment: "")
+        // Strings uploaded in the admin panel come first, then the ones built into the app.
+        // A language added in the admin panel has no .lproj: its missing strings are in English.
+        let code = {{enumName}}.currentLanguageCode
+        let format = LanguageCatalog.shared.string(for: key, language: code) ?? bundledString(table, key, code)
         let result = String(format: format, locale: Locale.current, arguments: args)
 
         return result
@@ -91,6 +90,14 @@ public extension {{enumName}} {
   
     static func tr(_ key: String) -> String {
         tr(Constants.defaultTable, key)
+    }
+
+    private static func bundledString(_ table: String, _ key: String, _ code: String) -> String {
+        let main = {{param.bundle|default:"BundleToken.bundle"}}
+        let path = main.path(forResource: code, ofType: "lproj") ?? main.path(forResource: "en", ofType: "lproj")
+        let bundle = path.flatMap(Bundle.init(path:)) ?? main
+        // swiftlint:disable:next nslocalizedstring_key
+        return NSLocalizedString(key, tableName: table, bundle: bundle, comment: "")
     }
 }
 

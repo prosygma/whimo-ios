@@ -27,7 +27,7 @@
 
 import SwiftUI
 import Utility
-import enum Resources.LocalizeKeys
+import struct Resources.LocalizeKeys
 
 private typealias Module = BuyTxOnFarmDialogModule
 private typealias ViewModel = Module.ViewModel

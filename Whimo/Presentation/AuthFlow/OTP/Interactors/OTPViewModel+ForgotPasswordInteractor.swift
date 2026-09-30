@@ -26,7 +26,7 @@
 //
 
 import Foundation
-import enum Resources.LocalizeKeys
+import struct Resources.LocalizeKeys
 
 private typealias Module = OTPModule
 private typealias InteractorProtocol = Module.InteractorProtocol
