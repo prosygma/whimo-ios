@@ -84,7 +84,7 @@ extension DefaultToggleStyle {
 extension Theme {
     public static var standard: Self {
         .init(
-            onColor: AppColors.Primary.primarySeaBlue.colorSwiftUI,
+            onColor: AppColors.Primary.primaryBrand.colorSwiftUI,
             offColor: AppColors.Gray.gray10.colorSwiftUI,
             thumbColor: AppColors.Other.white.colorSwiftUI
         )

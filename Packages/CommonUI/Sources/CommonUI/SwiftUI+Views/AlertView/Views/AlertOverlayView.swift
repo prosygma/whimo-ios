@@ -77,7 +77,7 @@ private extension AlertOverlayView {
     }
 
     @ViewBuilder func background() -> some View {
-        AppColors.Primary.primaryMidnightBlue.colorSwiftUI
+        AppColors.Primary.primaryBrandDark.colorSwiftUI
             .opacity(0.3)
             .ignoresSafeArea()
     }

@@ -100,7 +100,7 @@ private extension OverlayCalendarPicker {
             selection: datesBinding,
             in: Date(timeIntervalSince1970: Date.timeIntervalSinceReferenceDate)...
         )
-        .tint(AppColors.Primary.primarySeaBlue.colorSwiftUI)
+        .tint(AppColors.Primary.primaryBrand.colorSwiftUI)
         .background {
             RoundedRectangle(cornerRadius: 12)
                 .fill(AppColors.Other.white.colorSwiftUI)

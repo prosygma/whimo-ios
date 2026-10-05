@@ -63,7 +63,7 @@ private extension OptionView {
 
     @ViewBuilder func accessoryImage() -> some View {
         Circle()
-            .fill(AppColors.Other.lightBlue.colorSwiftUI)
+            .fill(AppColors.Other.brandTint.colorSwiftUI)
             .frame(width: 48, height: 48)
             .overlay { option.image }
     }

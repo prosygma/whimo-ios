@@ -58,7 +58,7 @@ private extension FarmLocationsPopup {
     @ViewBuilder func infoTextView(_ text: String) -> some View {
         HStack(spacing: 4) {
             Text("•")
-                .foregroundStyle(AppColors.Primary.primarySeaBlue.colorSwiftUI)
+                .foregroundStyle(AppColors.Primary.primaryBrand.colorSwiftUI)
             Text(text)
                 .foregroundStyle(AppColors.Gray.gray90.colorSwiftUI)
         }

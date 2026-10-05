@@ -34,7 +34,7 @@ public struct AppTabBar {
         public static let tabBarHeight: CGFloat = 62
 
         static let normalTabColor: Color = AppColors.Gray.gray50.colorSwiftUI
-        static let selectedTabColor: Color = AppColors.Primary.primarySeaBlue.colorSwiftUI
+        static let selectedTabColor: Color = AppColors.Primary.primaryBrand.colorSwiftUI
         static let backgroundColor: Color = AppColors.Other.white.colorSwiftUI
     }
 

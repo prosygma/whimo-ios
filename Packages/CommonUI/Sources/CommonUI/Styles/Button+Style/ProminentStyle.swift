@@ -60,9 +60,9 @@ extension Style.Button {
 // MARK: - ButtonStyle+ProminentStyle
 extension ButtonStyle where Self == Style.Button.ProminentStyle {
     static func prominent(
-        color: Color = AppColors.Primary.primarySeaBlue.colorSwiftUI,
+        color: Color = AppColors.Primary.primaryBrand.colorSwiftUI,
         textColor: Color = AppColors.Other.white.colorSwiftUI,
-        pressedColor: Color? = AppColors.Primary.primaryBerryBlue.colorSwiftUI,
+        pressedColor: Color? = AppColors.Primary.primaryBrandPressed.colorSwiftUI,
         isEnabled: Bool = true
     ) -> Style.Button.ProminentStyle {
         Style.Button.ProminentStyle(
@@ -76,9 +76,9 @@ extension ButtonStyle where Self == Style.Button.ProminentStyle {
 
 extension Button {
     public func applyProminentStyle(
-        color: Color = AppColors.Primary.primarySeaBlue.colorSwiftUI,
+        color: Color = AppColors.Primary.primaryBrand.colorSwiftUI,
         textColor: Color = AppColors.Other.white.colorSwiftUI,
-        pressedColor: Color? = AppColors.Primary.primaryBerryBlue.colorSwiftUI,
+        pressedColor: Color? = AppColors.Primary.primaryBrandPressed.colorSwiftUI,
         isEnabled: Bool = true
     ) -> some View {
         buttonStyle(.prominent(
@@ -101,8 +101,8 @@ struct WideButtonDemo_Previews: PreviewProvider {
                 Text("OK")
             }
             .buttonStyle(.prominent(
-                color: AppColors.Primary.primarySeaBlue.colorSwiftUI,
-                pressedColor: AppColors.Primary.primaryBerryBlue.colorSwiftUI
+                color: AppColors.Primary.primaryBrand.colorSwiftUI,
+                pressedColor: AppColors.Primary.primaryBrandPressed.colorSwiftUI
             ))
 
             Button {
@@ -119,8 +119,8 @@ struct WideButtonDemo_Previews: PreviewProvider {
                 Text("OK")
             }
             .buttonStyle(.prominent(
-                color: AppColors.Primary.primarySeaBlue.colorSwiftUI,
-                pressedColor: AppColors.Primary.primaryBerryBlue.colorSwiftUI,
+                color: AppColors.Primary.primaryBrand.colorSwiftUI,
+                pressedColor: AppColors.Primary.primaryBrandPressed.colorSwiftUI,
                 isEnabled: false
             ))
         }

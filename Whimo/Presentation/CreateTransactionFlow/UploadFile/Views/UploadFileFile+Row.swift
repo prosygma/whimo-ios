@@ -87,7 +87,7 @@ private extension FileRow {
         } label: {
             Text(Localization.button)
                 .appFontMediumSize16()
-                .foregroundStyle(AppColors.Primary.primarySeaBlue.colorSwiftUI)
+                .foregroundStyle(AppColors.Primary.primaryBrand.colorSwiftUI)
         }
     }
 

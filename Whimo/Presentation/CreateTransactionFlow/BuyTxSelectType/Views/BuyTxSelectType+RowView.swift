@@ -65,7 +65,7 @@ private extension RowView {
 
     @ViewBuilder func accessoryImage() -> some View {
         Circle()
-            .fill(AppColors.Other.lightBlue.colorSwiftUI)
+            .fill(AppColors.Other.brandTint.colorSwiftUI)
             .frame(width: 48, height: 48)
             .overlay { row.icon }
     }
@@ -74,7 +74,7 @@ private extension RowView {
         VStack(spacing: 8) {
             Text(row.title)
                 .appFontMediumSize14()
-                .foregroundStyle(AppColors.Primary.primarySeaBlue.colorSwiftUI)
+                .foregroundStyle(AppColors.Primary.primaryBrand.colorSwiftUI)
             VStack(spacing: 8) {
                 Text(row.subtitle)
                     .appFontMediumSize18()

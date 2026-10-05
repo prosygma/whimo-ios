@@ -50,7 +50,7 @@ public struct AppButton: View {
         var backgroundColor: Color {
             switch self {
                 case .prominent:
-                    AppColors.Primary.primarySeaBlue.colorSwiftUI
+                    AppColors.Primary.primaryBrand.colorSwiftUI
                 case .bordered:
                     AppColors.Gray.gray10.colorSwiftUI
                 case .destructive:
@@ -61,7 +61,7 @@ public struct AppButton: View {
         var pressedBackgroundColor: Color {
             switch self {
                 case .prominent:
-                    AppColors.Primary.primaryBerryBlue.colorSwiftUI
+                    AppColors.Primary.primaryBrandPressed.colorSwiftUI
                 case .bordered:
                     AppColors.Gray.gray10.colorSwiftUI
                 case .destructive:

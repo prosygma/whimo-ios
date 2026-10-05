@@ -71,8 +71,8 @@ struct BorderButtonDemo_Previews: PreviewProvider {
                 Text("OK")
             }
             .buttonStyle(.borderWide(
-                color: AppColors.Primary.primarySeaBlue.colorSwiftUI,
-                textColor: AppColors.Primary.primarySeaBlue.colorSwiftUI
+                color: AppColors.Primary.primaryBrand.colorSwiftUI,
+                textColor: AppColors.Primary.primaryBrand.colorSwiftUI
             ))
             .padding([.leading, .trailing], 16)
         }
