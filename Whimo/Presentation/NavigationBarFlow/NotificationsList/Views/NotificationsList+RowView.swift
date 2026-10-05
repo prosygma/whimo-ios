@@ -109,7 +109,7 @@ private extension RowView {
             } label: {
                 Text(Localization.Buttons.viewDetails)
                     .appFontMediumSize16()
-                    .foregroundStyle(AppColors.Primary.primarySeaBlue.colorSwiftUI)
+                    .foregroundStyle(AppColors.Primary.primaryBrand.colorSwiftUI)
             }
             Spacer()
         }

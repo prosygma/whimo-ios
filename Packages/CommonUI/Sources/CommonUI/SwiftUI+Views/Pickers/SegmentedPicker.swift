@@ -128,7 +128,7 @@ private extension SegmentedPicker {
             }
             .foregroundStyle(
                 selection.wrappedValue == item
-                ? AppColors.Primary.primarySeaBlue.colorSwiftUI
+                ? AppColors.Primary.primaryBrand.colorSwiftUI
                 : AppColors.Gray.gray50.colorSwiftUI
             )
             .frame(maxWidth: .infinity)
@@ -138,7 +138,7 @@ private extension SegmentedPicker {
 
     @ViewBuilder func selectionDivider() -> some View {
         Rectangle()
-            .fill(AppColors.Primary.primarySeaBlue.colorSwiftUI)
+            .fill(AppColors.Primary.primaryBrand.colorSwiftUI)
             .frame(height: kSelectionDividerHeight)
     }
 }

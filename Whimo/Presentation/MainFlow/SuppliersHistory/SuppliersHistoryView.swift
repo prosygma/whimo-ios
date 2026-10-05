@@ -174,7 +174,7 @@ private extension ModuleView {
             Button(action: didTapBackToRoot) {
                 Text(Localization.BottomOverlay.Other.goBack)
                     .appFontMediumSize16()
-                    .foregroundStyle(AppColors.Primary.primarySeaBlue.colorSwiftUI)
+                    .foregroundStyle(AppColors.Primary.primaryBrand.colorSwiftUI)
             }
             .ignoresSafeArea()
             .padding(.horizontal, 16)
@@ -191,7 +191,7 @@ private extension ModuleView {
     @ViewBuilder func bottomLoader() -> some View {
         ProgressView()
             .controlSize(.regular)
-            .tint(AppColors.Primary.primarySeaBlue.colorSwiftUI)
+            .tint(AppColors.Primary.primaryBrand.colorSwiftUI)
             .padding()
     }
 }

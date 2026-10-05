@@ -113,7 +113,7 @@ private extension RowView {
         Group {
             Text(row.emptyDetailsMessage)
                 .appFontMediumSize16()
-                .foregroundStyle(AppColors.Primary.primarySeaBlue.colorSwiftUI)
+                .foregroundStyle(AppColors.Primary.primaryBrand.colorSwiftUI)
             Text(row.emptyDetailsTitle)
                 .appFontRegularSize14()
                 .foregroundStyle(AppColors.Gray.gray60.colorSwiftUI)

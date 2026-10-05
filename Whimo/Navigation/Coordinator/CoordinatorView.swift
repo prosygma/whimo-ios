@@ -69,7 +69,7 @@ extension Module {
 
         // MARK: - Properties
         var coordinator: Router<Screen, Content> {
-            Router(navigationPath, accentColor: AppColors.Primary.primarySeaBlue.colorSwiftUI) { screen, index in
+            Router(navigationPath, accentColor: AppColors.Primary.primaryBrand.colorSwiftUI) { screen, index in
                 buildView(screen, index)
             }
         }

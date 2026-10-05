@@ -74,7 +74,7 @@ private extension OverlayDatePicker {
         )
 
         UIKitDatePicker(startDate: binding)
-            .tint(AppColors.Primary.primarySeaBlue.colorSwiftUI)
+            .tint(AppColors.Primary.primaryBrand.colorSwiftUI)
             .background {
                 RoundedRectangle(cornerRadius: 12)
                     .fill(AppColors.Other.white.colorSwiftUI)

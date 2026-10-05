@@ -100,7 +100,7 @@ public struct AppTextField: View {
             } label: {
                 Text(text)
                     .appFontMediumSize16()
-                    .foregroundStyle(AppColors.Primary.primarySeaBlue.colorSwiftUI)
+                    .foregroundStyle(AppColors.Primary.primaryBrand.colorSwiftUI)
             }
         }
     }

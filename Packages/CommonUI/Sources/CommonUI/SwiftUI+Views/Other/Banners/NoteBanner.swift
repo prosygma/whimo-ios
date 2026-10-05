@@ -49,7 +49,7 @@ public struct NoteBanner: View {
         var primaryColor: Color {
             switch self {
                 case .info:
-                    AppColors.Other.lightBlue.colorSwiftUI
+                    AppColors.Other.brandTint.colorSwiftUI
                 case .warning:
                     AppColors.Other.lightOrange.colorSwiftUI
             }
@@ -58,7 +58,7 @@ public struct NoteBanner: View {
         var secondaryColor: Color {
             switch self {
                 case .info:
-                    AppColors.Primary.primarySeaBlue.colorSwiftUI.opacity(0.1)
+                    AppColors.Primary.primaryBrand.colorSwiftUI.opacity(0.1)
                 case .warning:
                     AppColors.Expanded.expandedWarning.colorSwiftUI.opacity(0.1)
             }
@@ -135,7 +135,7 @@ private extension NoteBanner {
             } label: {
                 Text(actionButton.title)
                     .appFontMediumSize16()
-                    .foregroundStyle(AppColors.Primary.primarySeaBlue.colorSwiftUI)
+                    .foregroundStyle(AppColors.Primary.primaryBrand.colorSwiftUI)
             }
         }
     }

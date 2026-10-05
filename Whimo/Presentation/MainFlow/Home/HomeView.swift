@@ -141,7 +141,7 @@ private extension ModuleView {
                 Spacer()
                 VStack {
                     Circle()
-                        .fill(AppColors.Primary.primarySeaBlue.colorSwiftUI)
+                        .fill(AppColors.Primary.primaryBrand.colorSwiftUI)
                         .frame(width: 8, height: 8)
                         .opacity(dateFiltersEnabled ? 1 : 0)
                     Spacer()
@@ -206,7 +206,7 @@ private extension ModuleView {
     @ViewBuilder func bottomLoader() -> some View {
         ProgressView()
             .controlSize(.regular)
-            .tint(AppColors.Primary.primarySeaBlue.colorSwiftUI)
+            .tint(AppColors.Primary.primaryBrand.colorSwiftUI)
             .padding()
     }
 

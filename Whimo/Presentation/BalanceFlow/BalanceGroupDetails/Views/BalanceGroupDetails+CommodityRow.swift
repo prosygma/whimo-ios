@@ -97,8 +97,8 @@ private extension CommodityRow {
         }
         .foregroundStyle(
             connectionReachable
-            ? AppColors.Primary.primarySeaBlue.colorSwiftUI
-            : AppColors.Primary.primarySeaBlue.colorSwiftUI.opacity(0.4)
+            ? AppColors.Primary.primaryBrand.colorSwiftUI
+            : AppColors.Primary.primaryBrand.colorSwiftUI.opacity(0.4)
         )
         .animation(.snappy, value: connectionReachable)
     }

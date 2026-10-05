@@ -36,7 +36,7 @@ public struct AppCheckBox: View {
     // MARK: - Private Properties
     private var backgroundColor: Color {
         isSelected
-        ? AppColors.Primary.primarySeaBlue.colorSwiftUI
+        ? AppColors.Primary.primaryBrand.colorSwiftUI
         : AppColors.Other.white.colorSwiftUI
     }
 

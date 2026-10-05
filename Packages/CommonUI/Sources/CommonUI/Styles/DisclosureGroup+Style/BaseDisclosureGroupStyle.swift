@@ -134,9 +134,9 @@ struct BaseDisclosureGroupStyle_Previews: PreviewProvider {
             }
             .disclosureGroupStyle(BaseDisclosureGroupStyle(appearance: .init(
                 font: FontBuilder.buildMedium(size: 16),
-                textColor: AppColors.Primary.primarySeaBlue.colorSwiftUI,
-                backgroundColor: AppColors.Other.lightBlue.colorSwiftUI,
-                indicatorColor: AppColors.Primary.primarySeaBlue.colorSwiftUI
+                textColor: AppColors.Primary.primaryBrand.colorSwiftUI,
+                backgroundColor: AppColors.Other.brandTint.colorSwiftUI,
+                indicatorColor: AppColors.Primary.primaryBrand.colorSwiftUI
             )))
         }
         .frame(height: UIScreen.main.bounds.height)

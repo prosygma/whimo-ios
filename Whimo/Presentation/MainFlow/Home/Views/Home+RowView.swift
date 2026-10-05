@@ -99,7 +99,7 @@ private extension RowView {
                 } label: {
                     Text(Localization.Buttons.addInfo)
                         .appFontMediumSize16()
-                        .foregroundStyle(AppColors.Primary.primarySeaBlue.colorSwiftUI)
+                        .foregroundStyle(AppColors.Primary.primaryBrand.colorSwiftUI)
                 }
             }
         }

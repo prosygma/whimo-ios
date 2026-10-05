@@ -112,7 +112,7 @@ private extension ModuleView {
         } label: {
             Text(Localization.Buttons.switchToPhone)
                 .appFontMediumSize16()
-                .foregroundStyle(AppColors.Primary.primarySeaBlue.colorSwiftUI)
+                .foregroundStyle(AppColors.Primary.primaryBrand.colorSwiftUI)
         }
     }
 

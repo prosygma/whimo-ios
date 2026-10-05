@@ -114,7 +114,7 @@ private extension ModuleView {
     @ViewBuilder func bottomLoader() -> some View {
         ProgressView()
             .controlSize(.regular)
-            .tint(AppColors.Primary.primarySeaBlue.colorSwiftUI)
+            .tint(AppColors.Primary.primaryBrand.colorSwiftUI)
             .padding()
     }
 }
