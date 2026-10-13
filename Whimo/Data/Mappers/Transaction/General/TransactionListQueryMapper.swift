@@ -1,8 +1,10 @@
 //
-//  NetworkingTests.swift
+//  TransactionListQueryMapper.swift
 //  Whimo
 //
-//  Copyright (c) 2025 EFI https://efi.int/
+//  Created by Pavel Pushkarev on 19.08.2026.
+//
+//  Copyright (c) 2026 EFI https://efi.int/
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -22,15 +24,24 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 //
-import XCTest
-@testable import Networking
 
-final class NetworkingTests: XCTestCase {
-    func testExample() throws {
-        // XCTest Documentation
-        // https://developer.apple.com/documentation/xctest
+import Foundation
+import RestClient
 
-        // Defining Test Cases and Test Methods
-        // https://developer.apple.com/documentation/xctest/defining_test_cases_and_test_methods
+protocol TransactionListQueryMapperProtocol {
+    func toDTO(_ query: TransactionListQuery) -> RequestModels.TransactionsList.SearchData
+}
+
+// MARK: - Shared List and Export Criteria
+struct TransactionListQueryMapper: TransactionListQueryMapperProtocol {
+    func toDTO(_ query: TransactionListQuery) -> RequestModels.TransactionsList.SearchData {
+        .init(
+            search: query.search.isEmpty ? nil : query.search,
+            createdAtFrom: query.createdAtFrom.map { DateTimeFormatter.iso8601.format(date: $0) },
+            createdAtTo: query.createdAtTo.map { DateTimeFormatter.iso8601.format(date: $0) },
+            action: query.action.map { $0 == .buy ? .buy : .sell }, buyerData: nil,
+            commodityGroupId: query.filter.group?.id, harvestSeasonId: query.exactSeasonId ?? query.filter.season?.id,
+            commodityId: query.commodityId, orderings: query.newestFirst ? "-created_at" : nil
+        )
     }
 }

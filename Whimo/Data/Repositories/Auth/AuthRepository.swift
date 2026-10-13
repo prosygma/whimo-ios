@@ -33,10 +33,10 @@ protocol AuthRepository: AnyObject {
     func signInWithGoogle(idToken: String) async throws
     func signInWithApple(idToken: String, nonce: String) async throws
 
-    func sendOTP(gadgetId: String) async throws
+    func sendOTP(gadgetId: String, captchaToken: String) async throws
     func verifyOTP(gadgetId: String, code: String) async throws
 
-    func sendPasswordReset(gadgetId: String) async throws
+    func sendPasswordReset(gadgetId: String, captchaToken: String) async throws
     func checkPasswordReset(gadgetId: String, code: String) async throws
     func verifyPasswordReset(gadgetId: String, pass: String, code: String) async throws
 
