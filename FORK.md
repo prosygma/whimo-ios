@@ -70,7 +70,7 @@ in a short, stable list of spots (expect small, easy conflicts there on merges):
 |---|---|
 | `Whimo.xcodeproj/project.pbxproj`, `APP_DISPLAY_NAME` (3 configurations) | CamerTrace, CamerTrace DEV, CamerTrace STAGE |
 | `Packages/Resources/.../Localization/*/Localizable.strings` | `general.appName` and the 4 invite/account strings |
-| `Whimo/Resources/Assets.xcassets/splashScreen.imageset/splashScreen.pdf` | seal + CamerTrace + slogan (360×800 pt, text outlined) |
+| `Whimo/Resources/Assets.xcassets/splashScreen.imageset/splashScreen.pdf` | full logo: seal + CamerTrace + slogan (280×350 pt, text outlined, kept as vector) |
 | `Whimo/Resources/Assets.xcassets/AppIcon*.appiconset/*.jpg` | emblem icon (dev / stage with a band) |
 | `Whimo/Services/EmailClient/...DefaultEmailRecipients.swift` | feedback e-mail subject |
 
@@ -87,6 +87,7 @@ in a short, stable list of spots (expect small, easy conflicts there on merges):
 - **Bundle identifier.** Still `com.maddevs.Whimo…`; changing it needs a new App
   Store Connect app and provisioning profiles.
 
-Brand sources (logos, graphic chart, export scripts) are outside the repo, in
-`Documents/whimo/logos/camertrace-cicc/` (`charte-graphique.html`,
-`render.sh`, `declinaisons/`).
+Brand sources (logos, graphic chart, export scripts) are outside the repo. The
+logo in use is v3, in `Documents/whimo/logos/camertrace-cicc-v3/` (`render.sh`,
+`check_fit.py`, `declinaisons/`); the graphic chart (`charte-graphique.html`)
+is still in `Documents/whimo/logos/camertrace-cicc/`.
