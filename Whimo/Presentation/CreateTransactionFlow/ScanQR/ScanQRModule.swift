@@ -31,8 +31,9 @@ import SwiftUI
 struct ScanQRModule {
     typealias ViewModelProtocol = ScanQRViewModelProtocol
 
-    static func assemble() -> some View {
-        MainView()
+    /// - Parameter cicc: read a CICC plot card instead of a GeoJSON code (CamerTrace).
+    static func assemble(cicc: Bool = false) -> some View {
+        MainView(viewModel: .init(cicc: cicc), cicc: cicc)
     }
 }
 

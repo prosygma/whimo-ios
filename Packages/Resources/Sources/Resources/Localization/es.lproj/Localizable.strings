@@ -461,12 +461,16 @@
 
 // MARK: - Scan QR
 "scanQR.title" = "Escanear QR";
+"scanQR.cicc.error.coordinates" = "Código QR del CICC no válido: faltan las coordenadas de la parcela";
+"scanQR.cicc.error.fields" = "Código QR del CICC no válido: falta(n) el/los campo(s) %@";
 
 // MARK: - Choose Farm Geodata
 "chooseFarmGeodata.title" = "Geodatos de la finca";
 
 "chooseFarmGeodata.row.qr.title" = "Escanear código QR";
 "chooseFarmGeodata.row.qr.subtitle" = "Escanea un código QR en una tarjeta que te presenta el agricultor.";
+"chooseFarmGeodata.row.ciccQr.title" = "Escanear el código QR del CICC";
+"chooseFarmGeodata.row.ciccQr.subtitle" = "Escanea el código QR de la ficha de identificación de parcela del CICC del agricultor.";
 
 "chooseFarmGeodata.row.currentLocation.title" = "Registrar mis geodatos";
 "chooseFarmGeodata.row.currentLocation.subtitle" = "Registra tu geolocalización (punto GPS) como ubicación de la finca.";

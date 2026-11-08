@@ -37,6 +37,7 @@ private typealias Assets = AppAssets.ChooseFarmGeodata
 extension Module {
     enum Row: DomainModel, CaseIterable {
         case qrCode
+        case ciccQrCode
         case currentLocation
         case uploadFile
         case addLocation
@@ -47,6 +48,8 @@ extension Module {
             switch self {
                 case .qrCode:
                     Localization.Qr.title
+                case .ciccQrCode:
+                    Localization.CiccQr.title
                 case .currentLocation:
                     Localization.CurrentLocation.title
                 case .uploadFile:
@@ -60,6 +63,8 @@ extension Module {
             switch self {
                 case .qrCode:
                     Localization.Qr.subtitle
+                case .ciccQrCode:
+                    Localization.CiccQr.subtitle
                 case .currentLocation:
                     Localization.CurrentLocation.subtitle
                 case .uploadFile:
@@ -71,7 +76,7 @@ extension Module {
 
         var image: Image {
             switch self {
-                case .qrCode:
+                case .qrCode, .ciccQrCode:
                     Assets.chooseFarmGeoQrIcon.imageSwiftUI
                 case .currentLocation:
                     Assets.chooseFarmGeoMapPin.imageSwiftUI

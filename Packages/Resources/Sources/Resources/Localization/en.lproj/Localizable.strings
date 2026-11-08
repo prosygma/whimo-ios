@@ -461,12 +461,16 @@
 
 // MARK: - Scan QR
 "scanQR.title" = "Scan QR";
+"scanQR.cicc.error.coordinates" = "Invalid CICC QR code: the plot coordinates are missing";
+"scanQR.cicc.error.fields" = "Invalid CICC QR code: missing field(s) %@";
 
 // MARK: - Choose Farm Geodata
 "chooseFarmGeodata.title" = "Farm geodata";
 
 "chooseFarmGeodata.row.qr.title" = "Scan QR code";
 "chooseFarmGeodata.row.qr.subtitle" = "Scan a QR code on a card that is presented to you by the farmer.";
+"chooseFarmGeodata.row.ciccQr.title" = "Scan the CICC QR code";
+"chooseFarmGeodata.row.ciccQr.subtitle" = "Scan the QR code on the farmer's CICC plot identification card.";
 
 "chooseFarmGeodata.row.currentLocation.title" = "Record my geodata";
 "chooseFarmGeodata.row.currentLocation.subtitle" = "Record your own geolocation (GPS point) as a farm location.";

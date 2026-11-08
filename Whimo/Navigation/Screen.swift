@@ -64,6 +64,7 @@ enum Screen: AnyScreen {
     case buyTxOnFarmDialog
     case createTransactionForm(transactionType: TransactionType)
     case scanQR
+    case scanCiccQR
     case chooseFarmGeodata
     case uploadFile(mode: UploadFileModule.Mode)
     case addGpsPoint

@@ -29,6 +29,7 @@ import Foundation
 import StorageKit
 import struct Resources.LocalizeKeys
 import class Resources.LanguageCatalog
+import class Resources.AppOptions
 import Utility
 
 final class UserAgentService: UserAgentServiceProtocol {
@@ -62,6 +63,11 @@ final class UserAgentService: UserAgentServiceProtocol {
 
         // Languages and strings are managed in the admin panel: refresh them, then make sure
         // the language in use is still offered.
+        // Geodata options set in the admin panel (CamerTrace).
+        Task {
+            await AppOptions.shared.refresh(baseURL: ApiConfiguration.baseUrl)
+        }
+
         Task {
             let catalog: LanguageCatalog = .shared
             await catalog.refreshLanguages(baseURL: ApiConfiguration.baseUrl)

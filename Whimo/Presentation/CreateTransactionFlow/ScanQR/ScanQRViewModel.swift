@@ -30,6 +30,12 @@ import Combine
 import AudioToolbox
 import struct CoreLocation.CLLocationCoordinate2D
 import Utility
+import Resources
+
+private struct CiccQrError: LocalizedError {
+    let message: String
+    var errorDescription: String? { message }
+}
 
 private typealias Module = ScanQRModule
 private typealias ViewModel = Module.ViewModel
@@ -42,12 +48,14 @@ extension Module {
 
         // MARK: - Private Properties
         private var cancellable: CancelBag = .init()
+        private let cicc: Bool
         // MARK: - Dependencies
         @Inject(\.appState) private var appState
         @Inject(\.qrCodeDataService) private var qrCodeDataService
 
         // MARK: - Init
-        init() {
+        init(cicc: Bool = false) {
+            self.cicc = cicc
             setupBinding()
         }
 
@@ -66,13 +74,28 @@ private extension ViewModel {
                 guard let self else { return }
 
                 do {
-                    let farmData = try self.qrCodeDataService.saveGroundFarmInfo(from: code)
+                    let geoJSON = try self.cicc ? Self.ciccGeoJSON(from: code) : code
+                    let farmData = try self.qrCodeDataService.saveGroundFarmInfo(from: geoJSON)
                     self.saveData(farmData.coordinates, selectedFile: farmData.selectedFile)
                 } catch {
                     appState.showError(message: error.localizedDescription)
                 }
             }
             .store(in: cancellable)
+    }
+
+    /// CamerTrace: a CICC plot card becomes a GeoJSON polygon marked `"Source": "CICC"`, then follows
+    /// the generic QR path. The backend recognises the mark and applies the CICC traceability rule.
+    static func ciccGeoJSON(from code: String) throws -> String {
+        switch CiccQrParser.parse(code) {
+            case .success(let plot):
+                return plot.geoJSON
+            case .failure(.missing(let keys)):
+                if keys.contains(CiccQrParser.coordinates) {
+                    throw CiccQrError(message: AppLocale.ScanQR.Cicc.Error.coordinates)
+                }
+                throw CiccQrError(message: AppLocale.ScanQR.Cicc.Error.fields(keys.joined(separator: ", ")))
+        }
     }
 
     // MARK: - Common

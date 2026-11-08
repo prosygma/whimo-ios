@@ -38,13 +38,19 @@ private typealias Assets = AppAssets.ScanQR
 extension Module {
     struct MainView: View {
         // MARK: - Dependencies
-        @StateObject var viewModel: ViewModel = .init()
+        @StateObject var viewModel: ViewModel
         @EnvironmentObject var navigator: AppFlowNavigator
+        let cicc: Bool
+
+        init(viewModel: ViewModel = .init(), cicc: Bool = false) {
+            _viewModel = StateObject(wrappedValue: viewModel)
+            self.cicc = cicc
+        }
 
         // MARK: - Body
         var body: some View {
             content()
-                .applyNavigationBar(title: Localization.title)
+                .applyNavigationBar(title: cicc ? AppLocale.ChooseFarmGeodata.Row.CiccQr.title : Localization.title)
                 .background {
                     AppColors.Other.white.colorSwiftUI
                         .ignoresSafeArea()

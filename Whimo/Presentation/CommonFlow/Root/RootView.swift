@@ -130,6 +130,8 @@ private extension ModuleView {
                 CreateTransactionFormModule.assemble(transactionType: transactionType)
             case .scanQR:
                 ScanQRModule.assemble()
+            case .scanCiccQR:
+                ScanQRModule.assemble(cicc: true)
             case .chooseFarmGeodata:
                 ChooseFarmGeodataModule.assemble()
             case .uploadFile(let mode):

@@ -29,6 +29,7 @@ import SwiftUI
 import Utility
 import class CommonUI.AlertManager
 import struct Resources.LocalizeKeys
+import class Resources.AppOptions
 
 private typealias Module = BuyTxSelectSellerModule
 private typealias ViewModel = Module.ViewModel
@@ -53,6 +54,13 @@ extension Module {
 
         // MARK: - ViewModelProtocol
         func didTapBuyFromFarmer() {
+            // CamerTrace: the "Are you on the farm?" question can be turned off in the admin.
+            guard AppOptions.shared.values.askOnPlot else {
+                let seller: TransactionType.Seller = .farmer(isCurrentlyOnFarm: false)
+                let screen: Screen = .createTransactionForm(transactionType: .producer(seller: seller))
+                appState.navigation[\.path].append(.push(screen))
+                return
+            }
             appState.navigation[\.path].append(.push(.buyTxOnFarmDialog))
         }
 

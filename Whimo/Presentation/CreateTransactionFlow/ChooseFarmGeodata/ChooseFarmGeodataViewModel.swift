@@ -42,11 +42,13 @@ extension Module {
                 case .producer(let seller):
                     switch seller {
                         case .farmer(isCurrentlyOnFarm: let isCurrentlyOnFarm):
-                            if isCurrentlyOnFarm {
-                                return .init(uniqueElements: [.qrCode, .currentLocation, .addLocation])
-                            } else {
-                                return .init(uniqueElements: [.qrCode, .addLocation])
-                            }
+                            // CamerTrace: the CICC scan and the map point are switched in the admin.
+                            let options = AppOptions.shared.values
+                            var rows: [Row] = [.qrCode]
+                            if options.allowCiccQr { rows.append(.ciccQrCode) }
+                            if isCurrentlyOnFarm { rows.append(.currentLocation) }
+                            if options.allowGpsPoint { rows.append(.addLocation) }
+                            return .init(uniqueElements: rows)
                         case .cooperative:
                             return .init(uniqueElements: [])
                     }

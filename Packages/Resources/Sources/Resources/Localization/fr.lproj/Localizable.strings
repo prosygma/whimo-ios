@@ -461,12 +461,16 @@
 
 // MARK: - Scan QR
 "scanQR.title" = "Scanner QR";
+"scanQR.cicc.error.coordinates" = "Code QR du CICC invalide : les coordonnées de la parcelle manquent";
+"scanQR.cicc.error.fields" = "Code QR du CICC invalide : champ(s) manquant(s) %@";
 
 // MARK: - Choose Farm Geodata
 "chooseFarmGeodata.title" = "Données de géo-localisation de la parcelle";
 
 "chooseFarmGeodata.row.qr.title" = "Scanner le code QR";
 "chooseFarmGeodata.row.qr.subtitle" = "Scannez un code QR sur une carte qui vous est présentée par l'producteur.";
+"chooseFarmGeodata.row.ciccQr.title" = "Scanner le code QR du CICC";
+"chooseFarmGeodata.row.ciccQr.subtitle" = "Scannez le code QR de la fiche d'identification de parcelle du CICC présentée par le producteur.";
 
 "chooseFarmGeodata.row.currentLocation.title" = "Enregistrer mes données de géo-localisation";
 "chooseFarmGeodata.row.currentLocation.subtitle" = "Enregistrez votre géolocalisation (point GPS) comme emplacement de parcelle.";

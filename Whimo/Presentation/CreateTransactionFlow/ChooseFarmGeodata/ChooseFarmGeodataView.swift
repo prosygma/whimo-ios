@@ -81,6 +81,8 @@ private extension ModuleView {
         switch row {
             case .qrCode:
                 navigator.push(.scanQR)
+            case .ciccQrCode:
+                navigator.push(.scanCiccQR)
             case .currentLocation:
                 viewModel.pickCurrentCoordinates()
             case .uploadFile:
