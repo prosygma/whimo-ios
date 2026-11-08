@@ -64,9 +64,12 @@ public final class AppOptions: @unchecked Sendable {
     public static let shared: AppOptions = .init()
 
     private static let storageKey = "app_options"
+    private static let descriptionsKey = "app_options_traceability_descriptions"
     private let lock: NSLock = .init()
     private let defaults: UserDefaults
     private var cached: Values
+    /// Traceability status explanations by language code, then by status ("full", ...).
+    private var descriptions: [String: [String: String]]
 
     public init(defaults: UserDefaults = .standard) {
         self.defaults = defaults
@@ -75,6 +78,32 @@ public final class AppOptions: @unchecked Sendable {
             cached = values
         } else {
             cached = Values()
+        }
+        if let data = defaults.data(forKey: Self.descriptionsKey),
+           let stored = try? JSONDecoder().decode([String: [String: String]].self, from: data) {
+            descriptions = stored
+        } else {
+            descriptions = [:]
+        }
+    }
+
+    /// The backend's explanation of a traceability status ("full", "conditional", "partial",
+    /// "incomplete") in `language`, built from the admin's rules; nil when none was downloaded,
+    /// and the app then shows its own text.
+    public func traceabilityDescription(status: String, language: String) -> String? {
+        lock.lock()
+        defer { lock.unlock() }
+        let text = descriptions[language.lowercased()]?[status.lowercased()]
+        return text?.isEmpty == false ? text : nil
+    }
+
+    func update(descriptions newDescriptions: [String: String], language: String) {
+        lock.lock()
+        descriptions[language.lowercased()] = newDescriptions
+        let all = descriptions
+        lock.unlock()
+        if let data = try? JSONEncoder().encode(all) {
+            defaults.set(data, forKey: Self.descriptionsKey)
         }
     }
 
@@ -94,19 +123,40 @@ public final class AppOptions: @unchecked Sendable {
     }
 
     /// Downloads the options. Offline or on error, keeps the last ones.
-    /// - Parameter baseURL: the API base, ending with /api/v1.
-    public func refresh(baseURL: URL, session: URLSession = .shared) async {
-        let url = baseURL.appendingPathComponent("app-options/")
+    /// - Parameters:
+    ///   - baseURL: the API base, ending with /api/v1.
+    ///   - language: language code of the status explanations; kept per language.
+    public func refresh(baseURL: URL, language: String?, session: URLSession = .shared) async {
+        var request = URLRequest(url: baseURL.appendingPathComponent("app-options/"))
+        if let language { request.setValue(language, forHTTPHeaderField: "Accept-Language") }
         do {
-            let (data, response) = try await session.data(from: url)
+            let (data, response) = try await session.data(for: request)
             guard (response as? HTTPURLResponse)?.statusCode == 200 else { return }
-            update(try JSONDecoder().decode(Response.self, from: data).data)
+            apply(try JSONDecoder().decode(Response.self, from: data), language: language)
         } catch {
             return
         }
     }
 
+    func apply(_ response: Response, language: String?) {
+        update(response.data)
+        if let language, let received = response.descriptions {
+            update(descriptions: received, language: language)
+        }
+    }
+
     struct Response: Decodable {
         let data: Values
+        let descriptions: [String: String]?
+
+        enum CodingKeys: String, CodingKey { case data }
+        enum DataKeys: String, CodingKey { case traceabilityDescriptions = "traceability_descriptions" }
+
+        init(from decoder: Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            data = try container.decode(Values.self, forKey: .data)
+            let nested = try container.nestedContainer(keyedBy: DataKeys.self, forKey: .data)
+            descriptions = try nested.decodeIfPresent([String: String].self, forKey: .traceabilityDescriptions)
+        }
     }
 }

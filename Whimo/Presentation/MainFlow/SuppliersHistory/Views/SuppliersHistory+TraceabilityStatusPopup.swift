@@ -41,16 +41,7 @@ extension Module {
 
         // MARK: - Private Properties
         private var descriptionText: String {
-            switch status {
-                case .fullTraceability:
-                    Localization.Part1.description
-                case .conditionalTraceability:
-                    Localization.Part2.description
-                case .partialTraceability:
-                    Localization.Part3.description
-                case .incompleteTraceability:
-                    Localization.Part4.description
-            }
+            status.panelDescription
         }
 
         // MARK: - Body

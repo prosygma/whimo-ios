@@ -122,7 +122,7 @@ final class AppOptionsTests: XCTestCase {
         let json = #"{"success":true,"data":{"ask_on_plot":false,"allow_gps_point":false,"allow_cicc_qr":true}}"#
         let response = try JSONDecoder().decode(AppOptions.Response.self, from: Data(json.utf8))
 
-        AppOptions(defaults: defaults).update(response.data)
+        AppOptions(defaults: defaults).apply(response, language: "fr")
 
         XCTAssertEqual(AppOptions(defaults: defaults).values, .init(askOnPlot: false, allowGpsPoint: false, allowCiccQr: true))
     }
@@ -131,5 +131,18 @@ final class AppOptionsTests: XCTestCase {
         let values = try JSONDecoder().decode(AppOptions.Values.self, from: Data(#"{"allow_cicc_qr":true}"#.utf8))
 
         XCTAssertEqual(values, .init(askOnPlot: true, allowGpsPoint: true, allowCiccQr: true))
+    }
+
+    func testTraceabilityDescriptionsAreKeptPerLanguage() throws {
+        let json = #"{"data":{"ask_on_plot":true,"traceability_descriptions":{"full":"Obtenu avec : le scan du code QR du CICC.","partial":""}}}"#
+        let response = try JSONDecoder().decode(AppOptions.Response.self, from: Data(json.utf8))
+
+        AppOptions(defaults: defaults).apply(response, language: "FR")
+        let options = AppOptions(defaults: defaults)
+
+        XCTAssertEqual(options.traceabilityDescription(status: "full", language: "fr"), "Obtenu avec : le scan du code QR du CICC.")
+        XCTAssertNil(options.traceabilityDescription(status: "full", language: "en"))
+        XCTAssertNil(options.traceabilityDescription(status: "partial", language: "fr"))
+        XCTAssertNil(options.traceabilityDescription(status: "incomplete", language: "fr"))
     }
 }

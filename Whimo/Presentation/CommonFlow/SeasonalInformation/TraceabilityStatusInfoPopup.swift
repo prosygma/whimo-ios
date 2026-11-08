@@ -49,10 +49,10 @@ private extension TraceabilityStatusInfoPopup {
     @ViewBuilder func content() -> some View {
         VStack(spacing: 2) {
             Group {
-                textBlock(status: .fullTraceability, description: Localization.Part1.description)
-                textBlock(status: .conditionalTraceability, description: Localization.Part2.description)
-                textBlock(status: .partialTraceability, description: Localization.Part3.description)
-                textBlock(status: .incompleteTraceability, description: Localization.Part4.description)
+                textBlock(status: .fullTraceability, description: TransactionModel.Traceability.fullTraceability.panelDescription)
+                textBlock(status: .conditionalTraceability, description: TransactionModel.Traceability.conditionalTraceability.panelDescription)
+                textBlock(status: .partialTraceability, description: TransactionModel.Traceability.partialTraceability.panelDescription)
+                textBlock(status: .incompleteTraceability, description: TransactionModel.Traceability.incompleteTraceability.panelDescription)
             }
             .padding(16)
             .background(AppColors.Other.white.colorSwiftUI)
@@ -95,3 +95,24 @@ struct TransactionDetailsTraceabilityStatusInfoPopup_Previews: PreviewProvider {
     }
 }
 #endif
+
+// MARK: - Status explanation (CamerTrace)
+extension TransactionModel.Traceability {
+    /// The statuses follow the admin's traceability rules, so the backend writes their explanation
+    /// (downloaded with the app options, per language). The bundled text stays for offline use.
+    var panelDescription: String {
+        // Same storage as `@AppStorage(.currentLocalize)`: the LocalizeKeys raw value is the code.
+        let language = UserDefaults.standard.string(forKey: "currentLocalize") ?? LocalizeKeys.default.code
+        let key = rawValue.replacingOccurrences(of: "Traceability", with: "")
+        if let text = AppOptions.shared.traceabilityDescription(status: key, language: language) {
+            return text
+        }
+        typealias Localization = AppLocale.TransactionDetails.Popups.TraceabilityStatus
+        switch self {
+            case .fullTraceability: return Localization.Part1.description
+            case .conditionalTraceability: return Localization.Part2.description
+            case .partialTraceability: return Localization.Part3.description
+            case .incompleteTraceability: return Localization.Part4.description
+        }
+    }
+}

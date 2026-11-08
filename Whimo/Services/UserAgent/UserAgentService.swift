@@ -65,7 +65,11 @@ final class UserAgentService: UserAgentServiceProtocol {
         // the language in use is still offered.
         // Geodata options set in the admin panel (CamerTrace).
         Task {
-            await AppOptions.shared.refresh(baseURL: ApiConfiguration.baseUrl)
+            let language: LocalizeKeys? = userDefaultsStore.get(.currentLocalize)
+            await AppOptions.shared.refresh(
+                baseURL: ApiConfiguration.baseUrl,
+                language: language?.code ?? LocalizeKeys.default.code
+            )
         }
 
         Task {
