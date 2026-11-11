@@ -69,8 +69,8 @@
 "general.alert.contactsPermissionDenied.button.cancel" = "Annuler";
 "general.alert.contactsPermissionDenied.button.openSettings" = "Ouvrir Réglages";
 
-"general.alert.confirmCommodityConversion.title" = "Convertir une marchandise ?";
-"general.alert.confirmCommodityConversion.subtitle" = "Êtes-vous sûr de vouloir convertir la marchandise ? Veuillez examiner attentivement les données. Cette action ne peut être annulée.";
+"general.alert.confirmCommodityConversion.title" = "Convertir un produit ?";
+"general.alert.confirmCommodityConversion.subtitle" = "Êtes-vous sûr de vouloir convertir le produit ? Veuillez examiner attentivement les données. Cette action ne peut être annulée.";
 "general.alert.confirmCommodityConversion.button.cancel" = "Annuler";
 "general.alert.confirmCommodityConversion.button.convert" = "Convertir";
 
@@ -290,7 +290,7 @@
 
 "transactionDetails.offline.usernameNotAvaible" = "Nom d'utilisateur non disponible hors ligne";
 
-"transactionDetails.row.commodityType.title" = "Type de commodité";
+"transactionDetails.row.commodityType.title" = "Type de produit";
 
 "transactionDetails.row.farmGeodata.title" = "Données de géo-localisation de la parcelle";
 "transactionDetails.row.farmGeodata.descriptionMissing" = "Données manquantes";
@@ -384,11 +384,11 @@
 
 // MARK: - --- CONVERT COMMODITY FLOW ---
 // MARK: - Convert Commodity List
-"convertCommodityList.title" = "Convertir une marchandise";
-"convertCommodityList.subtitle" = "Veuillez sélectionner comment vous souhaitez convertir ce type de marchandise.";
+"convertCommodityList.title" = "Convertir un produit";
+"convertCommodityList.subtitle" = "Veuillez sélectionner comment vous souhaitez convertir ce type de produit.";
 
 // MARK: - Convert Commodity Details
-"convertCommodityDetails.title" = "Convertir une marchandise";
+"convertCommodityDetails.title" = "Convertir un produit";
 "convertCommodityDetails.note.title" = "Les informations sont présentées à l'aide d'équivalents standardisés. Vous pouvez les modifier si nécessaire.";
 "convertCommodityDetails.fromSection.title" = "De";
 "convertCommodityDetails.fromSection.balance" = "Votre solde: %@";
@@ -400,11 +400,11 @@
 "createTxSelectType.title" = "Ajouter une Transaction";
 "createTxSelectType.subtitle" = "Que souhaitez-vous faire ?";
 
-"createTxSelectType.options.buy" = "Acheter une marchandise";
-"createTxSelectType.options.sell" = "Vendre une marchandise";
+"createTxSelectType.options.buy" = "Acheter un produit";
+"createTxSelectType.options.sell" = "Vendre un produit";
 
 // MARK: - Buy Transaction Select Type
-"buyTxSelectType.title" = "Acheter ou collecter une marchandise";
+"buyTxSelectType.title" = "Acheter ou collecter un produit";
 "buyTxSelectType.subtitle" = "Quelle transaction créez-vous ?";
 
 "buyTxSelectType.row.producer.title" = "Transaction initiale";
@@ -423,7 +423,7 @@
 "buyTxSelectSeller.row.farmer.subtitle" = "Achat auprès de l'producteur qui a produit les biens.";
 
 "buyTxSelectSeller.row.cooperate.title" = "J'achète auprès d'une coopérative ou d'un commerçant";
-"buyTxSelectSeller.row.cooperate.subtitle" = "Achat auprès d'une coopérative qui a achats des commodités auprès de plusieurs producteurs ou d'un autre commerçant.";
+"buyTxSelectSeller.row.cooperate.subtitle" = "Achat auprès d'une coopérative qui a acheté des produits auprès de plusieurs producteurs ou d'un autre commerçant.";
 
 // MARK: - Buy Transaction On Farm Dialog
 "buyTxOnFarmDialog.title" = "Transaction initiale";
@@ -447,10 +447,10 @@
 
 "createTransactionForm.row.geodata.title" = "Données de géo-localisation de la parcelle";
 
-"createTransactionForm.row.comodityType.title" = "Type de commodité";
+"createTransactionForm.row.comodityType.title" = "Type de produit";
 "createTransactionForm.row.comodityType.titleSuffix" = "*";
 
-"createTransactionForm.row.volumes.title" = "Volume des commodités";
+"createTransactionForm.row.volumes.title" = "Volume des produits";
 "createTransactionForm.row.volumes.titleSuffix" = "*";
 
 "createTransactionForm.row.supplier.title" = "Informations sur le fournisseur";
@@ -505,18 +505,18 @@
 "addGpsPoint.buttons.confirm" = "Confirmer";
 
 // MARK: - Commodities List
-"commoditiesList.title" = "Type de commodité";
+"commoditiesList.title" = "Type de produit";
 "commoditiesList.buttons.confirm" = "Confirmer";
 
 "commoditiesList.row.balanceCount" = "Votre solde : %@";
 
 // MARK: - Commodity Volume
-"commodityVolume.title" = "Volume des commodités";
+"commodityVolume.title" = "Volume des produits";
 
 "commodityVolume.buttons.edit" = "Modifier";
 "commodityVolume.buttons.confirm" = "Confirmer";
 
-"commodityVolume.textFields.weight.description" = "Nombre";
+"commodityVolume.textFields.weight.description" = "Quantité";
 "commodityVolume.textFields.weight.placeholder" = "100";
 
 "commodityVolume.textFields.unit.description" = "Unité";
@@ -676,7 +676,7 @@
 
 // Buyer harvest season creation
 "creationSeason.choose" = "Choisir la saison de récolte";
-"creationSeason.catalogueRequired" = "Connectez-vous à Internet pour charger les saisons de récolte de cette marchandise, puis choisissez une saison.";
+"creationSeason.catalogueRequired" = "Connectez-vous à Internet pour charger les saisons de récolte de ce produit, puis choisissez une saison.";
 "creationSeason.balanceUnavailable" = "Votre solde : indisponible";
 "creationSeason.retry" = "Réessayer";
 
@@ -692,7 +692,7 @@
 "creationSeason.cachedBalance" = "Hors ligne : affichage du dernier solde saisonnier enregistré.";
 "creationSeason.invalidQuantity" = "Saisissez une quantité valide.";
 
-"creationSeason.producerCatalogueRequired" = "Connectez-vous à Internet pour charger la saison de récolte active de cette marchandise, puis réessayez.";
+"creationSeason.producerCatalogueRequired" = "Connectez-vous à Internet pour charger la saison de récolte active de ce produit, puis réessayez.";
 
 // Transaction acceptance
 "transactionAcceptance.accepted" = "Acceptée dans la saison de récolte enregistrée de la transaction.";
@@ -712,7 +712,7 @@
 "balanceDetails.remainingBalance" = "Solde restant";
 "balanceDetails.lastActivity" = "Dernière activité";
 "balanceDetails.sourceTransactions" = "Transactions sources";
-"balanceDetails.historyConnectionRequired" = "Connectez-vous à Internet pour charger les transactions de cette commodité et de cette saison de récolte.";
+"balanceDetails.historyConnectionRequired" = "Connectez-vous à Internet pour charger les transactions de ce produit et de cette saison de récolte.";
 "balanceDetails.historyError" = "Impossible de charger les transactions sources. Veuillez réessayer.";
 
 // Seller Automatic volume preview
