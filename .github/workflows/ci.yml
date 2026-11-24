@@ -1,0 +1,57 @@
+name: CI
+
+# Runs without any repository secret: the Firebase plists are replaced by placeholders.
+on:
+  pull_request:
+  push:
+    branches: [camertrace]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: macos-15
+    timeout-minutes: 60
+    # The app has not been built in CI before: report the result without blocking
+    # pull requests until the first green run. Remove this line once it passes.
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Placeholder Firebase configuration
+        run: |
+          set -euo pipefail
+          mkdir -p FirebaseSupportingFiles
+          for env in Dev Stage Prod; do
+            cp FirebaseSupportingFiles.example/GoogleService-Info.plist "FirebaseSupportingFiles/GoogleService-Info-$env.plist"
+          done
+
+      - name: Build (Dev scheme, simulator, unsigned)
+        run: |
+          set -o pipefail
+          xcodebuild build \
+            -project Whimo.xcodeproj \
+            -scheme "Whimo Dev" \
+            -destination 'generic/platform=iOS Simulator' \
+            CODE_SIGNING_ALLOWED=NO | tail -200
+
+  upstream-clean:
+    # Generic branches are candidates for EuropeanForestInstitute: they must carry no CamerTrace content.
+    if: github.event_name == 'pull_request' && (startsWith(github.head_ref, 'feat/') || startsWith(github.head_ref, 'fix/'))
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Fetch EFI main
+        run: |
+          git remote add upstream https://github.com/EuropeanForestInstitute/${{ github.event.repository.name }}.git
+          git fetch --no-tags upstream main
+      # Check the PR's own commits, not the merge with the base branch.
+      - run: scripts/check-upstream-clean.sh ${{ github.event.pull_request.head.sha }} upstream/main
