@@ -76,7 +76,7 @@ Replace the placeholder plists with real Firebase files for push notifications a
 Never commit them (`FirebaseSupportingFiles/` is gitignored).
 
 **Known gaps** (help welcome):
-- The CamerTrace iOS app has not been built and released yet; CI's build job is informative only.
+- The CamerTrace iOS app builds in CI (since 2026-11-24) but has not been run on a device or released yet.
 - The captcha URL is still EFI's `https://example.com/captcha` placeholder, which blocks sending
   verification codes. It needs a real page or a "no captcha" fallback, as Android has.
 - Phone sign-up has no CamerTrace country default, so every country is refused.
