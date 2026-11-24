@@ -41,11 +41,11 @@ enum AppConstants {
     // MARK: - Terms of Use
     // Used by RegisterView and MoreViewModel.
     #if DEBUG
-    static let termsOfUseURL: String = "https://terms/of/use/url"
+    static let termsOfUseURL: String = "https://www.camertrace.cm/terms"
     #elseif STAGE
-    static let termsOfUseURL: String = "https://terms/of/use/url"
+    static let termsOfUseURL: String = "https://www.camertrace.cm/terms"
     #elseif RELEASE
-    static let termsOfUseURL: String = "https://terms/of/use/url"
+    static let termsOfUseURL: String = "https://www.camertrace.cm/terms"
     #endif
 
     // MARK: - Email
