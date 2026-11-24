@@ -32,6 +32,7 @@ jobs:
             cp FirebaseSupportingFiles.example/GoogleService-Info.plist "FirebaseSupportingFiles/GoogleService-Info-$env.plist"
           done
 
+      # Plugin/macro validation is an interactive Xcode approval; CI has to skip it (SwiftGenPlugin).
       - name: Build (Dev scheme, simulator, unsigned)
         run: |
           set -o pipefail
@@ -39,7 +40,8 @@ jobs:
             -project Whimo.xcodeproj \
             -scheme "Whimo Dev" \
             -destination 'generic/platform=iOS Simulator' \
-            CODE_SIGNING_ALLOWED=NO | tail -200
+            -skipPackagePluginValidation -skipMacroValidation \
+            CODE_SIGNING_ALLOWED=NO 2>&1 | tail -200
 
   upstream-clean:
     # Generic branches are candidates for EuropeanForestInstitute: they must carry no CamerTrace content.
