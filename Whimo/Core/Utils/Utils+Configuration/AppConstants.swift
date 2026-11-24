@@ -38,6 +38,16 @@ enum AppConstants {
     static let privacyPolicy: String = "https://privacy/policy/url"
     #endif
 
+    // MARK: - Terms of Use
+    // Used by RegisterView and MoreViewModel.
+    #if DEBUG
+    static let termsOfUseURL: String = "https://www.camertrace.cm/terms"
+    #elseif STAGE
+    static let termsOfUseURL: String = "https://www.camertrace.cm/terms"
+    #elseif RELEASE
+    static let termsOfUseURL: String = "https://www.camertrace.cm/terms"
+    #endif
+
     // MARK: - Email
     static let feedbackEmail: String = "whimoapp@gmail.com"
 }

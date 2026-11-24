@@ -112,3 +112,6 @@ venv/
 # Xcode test artifacts
 *.xcresult
 *.xccoverage
+
+# Firebase configuration (real files come from the Firebase console; see FirebaseSupportingFiles.example/)
+FirebaseSupportingFiles/

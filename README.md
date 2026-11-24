@@ -1,3 +1,9 @@
+> **CamerTrace** (iOS app): the cocoa and coffee traceability platform of the CICC, Cameroon,
+> built on [WHIMO](https://github.com/EuropeanForestInstitute/whimo-ios) by the European Forest Institute.
+>
+> Contributing: [CONTRIBUTING.md](CONTRIBUTING.md) · Branches: [FORK.md](FORK.md) · Security: [SECURITY.md](SECURITY.md).
+> The rest of this README comes from WHIMO.
+
 # WHIMO iOS
 
 ![Swift Version](https://img.shields.io/badge/swift-5-flat?style=flat&logo=Swift&logoColor=white&color=midgreen)
