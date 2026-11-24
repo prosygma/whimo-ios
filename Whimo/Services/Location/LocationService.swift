@@ -129,7 +129,7 @@ class LocationService: NSObject, LocationServiceProtocol {
 //        let currentLocalize: LocalizeKeys = self.userDefaultsStore.get(.currentLocalize) ?? .english
 
         let currentLocalizeString: String = self.userDefaultsStore.get(.currentLocalize) ?? LocalizeKeys.english.code
-        guard let currentLocalize: LocalizeKeys = .init(rawValue: currentLocalizeString) else { return nil }
+        let currentLocalize = LocalizeKeys(rawValue: currentLocalizeString)
 
         log.debug("currentLocalize: \(currentLocalize)")
         let placemarks = try await geocoder.reverseGeocodeLocation(location, preferredLocale: currentLocalize.locale)
