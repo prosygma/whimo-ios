@@ -18,9 +18,6 @@ jobs:
     # Intel image: the arm64 macOS pool repeatedly failed to pick up the job (capacity).
     runs-on: macos-15-intel
     timeout-minutes: 60
-    # The app has not been built in CI before: report the result without blocking
-    # pull requests until the first green run. Remove this line once it passes.
-    continue-on-error: true
     steps:
       - uses: actions/checkout@v4
 
