@@ -38,7 +38,7 @@ let package = Package(
     ],
     dependencies: [
         .package(path: "../Extensions"),
-        .package(url: "https://github.com/pointfreeco/swift-identified-collections?tab=readme-ov-file", exact: "1.1.1"),
+        .package(url: "https://github.com/pointfreeco/swift-identified-collections", exact: "1.1.1"),
         .package(url: "https://github.com/hmlongco/Factory.git", exact: "2.5.3"),
         .package(url: "https://github.com/guykogus/CodableGeoJSON", exact: "4.0.0")
     ],
@@ -47,7 +47,7 @@ let package = Package(
             name: "Utility",
             dependencies: [
                 "Extensions",
-                .product(name: "IdentifiedCollections", package: "swift-identified-collections?tab=readme-ov-file"),
+                .product(name: "IdentifiedCollections", package: "swift-identified-collections"),
                 .product(name: "FactoryKit", package: "Factory"),
                 .product(name: "CodableGeoJSON", package: "CodableGeoJSON")
             ],
